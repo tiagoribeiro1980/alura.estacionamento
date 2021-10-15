@@ -5938,9 +5938,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\andre\\OneDrive\\Documentos\\Projetos\\Aula04\\Alura.Estacionamento\\Alura.Estacionamento.Tests\\Alura.Estacionamento.Tests.csproj",
-      "projectName": "Alura.Estacionamento.Tests",
-      "projectPath": "C:\\Users\\andre\\OneDrive\\Documentos\\Projetos\\Aula04\\Alura.Estacionamento\\Alura.Estacionamento.Tests\\Alura.Estacionamento.Tests.csproj",
+      "projectUniqueName": "C:\\Users\\andre\\OneDrive\\Documentos\\Projetos\\Aula04\\Alura.Estacionamento\\Alura.Estacionamento.Tests\\Alura.Estacionamento.Testes.csproj",
+      "projectName": "Alura.Estacionamento.Testes",
+      "projectPath": "C:\\Users\\andre\\OneDrive\\Documentos\\Projetos\\Aula04\\Alura.Estacionamento\\Alura.Estacionamento.Tests\\Alura.Estacionamento.Testes.csproj",
       "packagesPath": "C:\\Users\\andre\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\andre\\OneDrive\\Documentos\\Projetos\\Aula04\\Alura.Estacionamento\\Alura.Estacionamento.Tests\\obj\\",
       "projectStyle": "PackageReference",

@@ -9,7 +9,7 @@ namespace Alura.Estacionamento.Modelos
     {
         //Campos
         private string _placa;
-        private string _proprietario;        
+        private string _proprietario;
         private TipoVeiculo _tipo;
 
         //Propriedades
@@ -61,9 +61,9 @@ namespace Alura.Estacionamento.Modelos
         /// Framework, entre outros benefícios.
         /// </summary>
         public string Cor { get; set; }
-        public double Largura { get; set; }    
+        public double Largura { get; set; }
         public double VelocidadeAtual { get; set; }
-        public string Modelo { get; set; }        
+        public string Modelo { get; set; }
         public string Proprietario
         {
             get
@@ -95,36 +95,38 @@ namespace Alura.Estacionamento.Modelos
             this.VelocidadeAtual -= (tempoSeg * 15);
         }
 
-        public void AlteraDadosVeiculo(Veiculo veiculoAlterado)
-        {
-            this.Proprietario = veiculoAlterado.Proprietario;
-            this.Modelo = veiculoAlterado.Modelo;
-            this.Largura = veiculoAlterado.Largura;
-            this.Cor = veiculoAlterado.Cor;
-        }
-
-        public override string ToString()
-        {
-            return  $"Ficha do Veículo:\n " +
-                    $"Tipo do Veículo: {this.Tipo.ToString()}\n " +
-                    $"Proprietário: {this.Proprietario}\n" +
-                    $"Modelo: {this.Modelo}\n" +
-                    $"Cor: {this.Cor}\n" +
-                    $"Placa: {this.Placa}\n";            
-
-        }
 
         //Construtor
         public Veiculo()
         {
 
         }
+
         public Veiculo(string proprietario)
         {
-           Proprietario = proprietario;
+            Proprietario = proprietario;
         }
 
-        
+        public void AlterarDados(Veiculo veiculoAlterado)
+        {
+            this.Proprietario = veiculoAlterado.Proprietario;
+            this.Modelo = veiculoAlterado.Modelo;
+            this.Largura = veiculoAlterado.Largura;
+            this.Cor = veiculoAlterado.Cor;
+
+        }
+        public override string ToString()
+        {
+            return $"Ficha do Veículo:\n " +
+                    $"Tipo do Veículo: {this.Tipo.ToString()}\n " +
+                    $"Proprietário: {this.Proprietario}\n" +
+                    $"Modelo: {this.Modelo}\n" +
+                    $"Cor: {this.Cor}\n" +
+                    $"Placa: {this.Placa}\n";
+
+        }
+
+
 
     }
 }
