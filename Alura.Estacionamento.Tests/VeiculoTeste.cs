@@ -3,7 +3,7 @@ using System;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace Alura.Estacionamento.Tests
+namespace Alura.Estacionamento.Testes
 {
     public class VeiculoTeste
     {

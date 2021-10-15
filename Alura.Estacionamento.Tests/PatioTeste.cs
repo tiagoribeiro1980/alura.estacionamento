@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using Xunit;
 
-namespace Alura.Estacionamento.Tests
+namespace Alura.Estacionamento.Testes
 {
     public class PatioTeste
     {
@@ -32,10 +32,8 @@ namespace Alura.Estacionamento.Tests
         [Theory]
         [InlineData("André Silva", "ASD-1498", "preto", "Gol")]
         [InlineData("Jose Silva", "POL-9242", "Cinza", "Fusca")]
-        [InlineData("André Silva", "GDR-6524", "Azul", "Opala")]
-        [InlineData("André Silva", "OKU-1498", "Amarelo", "HB20")]
-        [InlineData("André Silva", "QWZ-5154", "Verde", "Santana")]
-        [InlineData("André Silva", "PLU-8472", "Branco", "Logan")]
+        [InlineData("Maria Silva", "GDR-6524", "Azul", "Opala")]
+        [InlineData("Pedro Silva", "GDR-0101", "Azul", "Corsa")]
         public void ValidaFaturamentoVeiculos(string proprietario,
                                                         string placa,
                                                         string cor,
