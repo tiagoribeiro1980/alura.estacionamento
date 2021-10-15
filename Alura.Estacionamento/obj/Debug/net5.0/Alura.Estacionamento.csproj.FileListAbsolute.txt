@@ -45,3 +45,4 @@ C:\Users\andre\OneDrive\Documentos\Projetos\Aula02\Alura.Estacionamento\Alura.Es
 C:\Users\andre\OneDrive\Documentos\Projetos\Aula02\Alura.Estacionamento\Alura.Estacionamento\bin\Debug\net5.0\ref\Alura.Estacionamento.dll
 C:\Users\andre\OneDrive\Documentos\Projetos\Aula02\Alura.Estacionamento\Alura.Estacionamento\bin\Debug\net5.0\Alura.Estacionamento.pdb
 C:\Users\andre\OneDrive\Documentos\Projetos\Aula02\Alura.Estacionamento\Alura.Estacionamento\obj\Debug\net5.0\Alura.Estacionamento.genruntimeconfig.cache
+C:\Users\andre\OneDrive\Documentos\Projetos\Aula02\Alura.Estacionamento\Alura.Estacionamento\obj\Debug\net5.0\Alura.Estacionamento.csproj.AssemblyReference.cache

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "/76Df7DZ/hopMvs0+ie5KoBqNIRC4V2oEKDdNpqle5jLLMF0btb1ol1821tE2POsOQptt+wIQoyvRPKqxMb0Fg==",
+  "dgSpecHash": "PqHlngcLnQzDVWN3EPdx4H8rb1LF+iv6DqVuAdIxmYV5FG9a6COnC5DJMk0algPNKYWkdrXr1GiG49R2ZdmBCg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\andre\\OneDrive\\Documentos\\Projetos\\Aula02\\Alura.Estacionamento\\Alura.Estacionamento.Tests\\Alura.Estacionamento.Tests.csproj",
+  "projectFilePath": "C:\\Users\\andre\\OneDrive\\Documentos\\Projetos\\Aula02\\Alura.Estacionamento\\Alura.Estacionamento.Tests\\Alura.Estacionamento.Testes.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\andre\\.nuget\\packages\\coverlet.collector\\3.0.2\\coverlet.collector.3.0.2.nupkg.sha512",
     "C:\\Users\\andre\\.nuget\\packages\\microsoft.codecoverage\\16.9.4\\microsoft.codecoverage.16.9.4.nupkg.sha512",
