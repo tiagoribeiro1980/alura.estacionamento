@@ -15,6 +15,9 @@ namespace Alura.Estacionamento.Modelos
         {
             Faturado = 0;
             veiculos = new List<Veiculo>();
+            _operadorPatio = new Operador();
+            _operadorPatio.Nome = "Operador Noturno";
+           
         }
         private List<Veiculo> veiculos;
         private double faturado;     
@@ -119,7 +122,7 @@ namespace Alura.Estacionamento.Modelos
 
         private string GerarTicket(Veiculo veiculo){
             // Vamos criar um Id aletório para o Ticket usando a Classe GUID e vamos padronizar com o tamanho de 6 caracteres.
-            string identificador = new Guid().ToString().Substring(0, 5);
+            string identificador = Guid.NewGuid().ToString().Substring(0, 5);
             veiculo.IdTicket = identificador;
             string ticket = "### Ticket Estacionameno Alura ###" +
                            $">>> Identificador: {identificador}" +
