@@ -14,6 +14,8 @@ namespace Alura.Estacionamento.Modelos
         {
             Faturado = 0;
             veiculos = new List<Veiculo>();
+            _operadorPatio = new Operador();
+            _operadorPatio.Nome = "Operador Noturno";
         }
         private List<Veiculo> veiculos;
         private double faturado;
