@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "6gp6bbafbXtU85CJR97sPTGTUn4ghKNXyPLM1pyu7XpxVVxzVvHXacrlMPy9D+Xym7h5ELgzzMSvPoFEC3vl9g==",
+  "dgSpecHash": "GO1RM0PkL8wOk3US7q/ErJJ5wh1vHjd7gHClOaSVJEmfF9lJqfOeWW1Ia3g05vSAgTPXv/pVJmZcE70CWLUC0w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\andre\\OneDrive\\Documentos\\Projetos\\Aula06\\Alura.Estacionamento\\Alura.Estacionamento\\Alura.Estacionamento.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\andre\\OneDrive\\Documentos\\Alura\\Escola de Programação\\Formação Teste .NET\\Curso 1\\Aula06\\Alura.Estacionamento\\Alura.Estacionamento\\Alura.Estacionamento.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\andre\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.15\\microsoft.netcore.app.host.win-x64.5.0.15.nupkg.sha512"
+  ],
   "logs": []
 }

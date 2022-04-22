@@ -13,6 +13,7 @@ namespace Alura.Estacionamento.Testes
     public class PatioTeste : IDisposable
     {
         private Veiculo veiculo;
+        private Operador operador;
         public ITestOutputHelper SaidaConsoleTeste;
 
         public PatioTeste(ITestOutputHelper _saidaConsoleTeste)
@@ -20,12 +21,20 @@ namespace Alura.Estacionamento.Testes
             SaidaConsoleTeste = _saidaConsoleTeste;
             SaidaConsoleTeste.WriteLine("Construtor invocado.");
             veiculo = new Veiculo();
+
+            operador = new Operador();
+            operador.Nome = "Pedro Fagundes";
+
         }
         [Fact]
         public void ValidaFaturamentoDoEstacionamentoComUmVeiculo()
         {
             //Arrange
             var estacionamento = new Patio();
+            //Operador operador = new Operador();
+            //operador.Nome = "Pedro Fagundes";
+            estacionamento.OperadorPatio = operador;
+
             //var veiculo = new Veiculo();
             veiculo.Proprietario = "André Silva";
             veiculo.Tipo = TipoVeiculo.Automovel;
@@ -56,6 +65,7 @@ namespace Alura.Estacionamento.Testes
         {
             //Arrange
             Patio estacionamento = new Patio();
+            estacionamento.OperadorPatio = operador;
             //var veiculo = new Veiculo();
             veiculo.Proprietario = proprietario;
             veiculo.Placa = placa;
@@ -79,13 +89,14 @@ namespace Alura.Estacionamento.Testes
         {
             //Arrange
             Patio estacionamento = new Patio();
+            estacionamento.OperadorPatio = operador;
             //var veiculo = new Veiculo();
             veiculo.Proprietario = proprietario;
             veiculo.Placa = placa;
             veiculo.Cor = cor;
             veiculo.Modelo = modelo;
             estacionamento.RegistrarEntradaVeiculo(veiculo);
-
+            
             //Act
             var consultado = estacionamento.PesquisaVeiculo(veiculo.IdTicket);
 
@@ -95,10 +106,11 @@ namespace Alura.Estacionamento.Testes
         }
 
         [Fact]
-        public void AlterarDadosVeiculoDoProprioVeiculo()
+        public void AlterarDadosDoProprioVeiculo()
         {
             //Arrange
             Patio estacionamento = new Patio();
+            estacionamento.OperadorPatio = operador;
             //var veiculo = new Veiculo();
             veiculo.Proprietario = "José Silva";
             veiculo.Placa = "ZXC-8524";
