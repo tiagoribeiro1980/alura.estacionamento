@@ -19,8 +19,13 @@ namespace Alura.Estacionamento.Modelos
         //Construtor
         public Operador()
         {
-            this.Matricula = Guid.NewGuid().ToString().Substring(0,8);
+            Matricula = Guid.NewGuid().ToString().Substring(0,8);
         }
 
+        public override string ToString()
+        {
+            return $"Operador: {Nome} \n" +
+                   $"Matricula: {Matricula}";
+        }
     }
 }

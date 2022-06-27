@@ -1,20 +1,21 @@
 using Alura.Estacionamento.Alura.Estacionamento.Modelos;
 using Alura.Estacionamento.Modelos;
 using System;
+using System.Security;
 using Xunit;
 using Xunit.Abstractions;
 
 namespace Alura.Estacionamento.Tests
 {
-    public class VeiculoTeste
+    public class VeiculoTeste: IDisposable
     {
-        public ITestOutputHelper Output { get; }
+        private ITestOutputHelper Output { get; }
         private Veiculo veiculo;
         private Operador operador;
         public VeiculoTeste(ITestOutputHelper output)
         {
             Output = output;
-            Output.WriteLine("Execução do  construtor.");
+            Output.WriteLine("ExecuÃ§Ã£o do  construtor.");
             veiculo = new Veiculo();
             veiculo.Tipo = TipoVeiculo.Automovel;
             operador = new Operador();
@@ -37,7 +38,7 @@ namespace Alura.Estacionamento.Tests
         }
 
         [Fact]
-        [Trait("Propriedade", "Proprietário")]
+        [Trait("Propriedade", "ProprietÃ¡rio")]
         public void TestaNomeProprietarioVeiculoComDoisCaracteres()
         {
             //Arrange 
@@ -84,7 +85,7 @@ namespace Alura.Estacionamento.Tests
                 () => new Veiculo().Placa = placa
             );
 
-            Assert.Equal("O 4° caractere deve ser um hífen", mensagem.Message);
+            Assert.Equal("O 4Â° caractere deve ser um hÃ­fen", mensagem.Message);
         }
 
         [Fact]
@@ -109,7 +110,7 @@ namespace Alura.Estacionamento.Tests
             estacionamento.OperadorPatio = operador;
             var veiculo = new Veiculo();
             veiculo.Tipo = TipoVeiculo.Automovel;
-            veiculo.Proprietario = "José Silva";
+            veiculo.Proprietario = "Josï¿½ Silva";
             veiculo.Placa = "ZXC-8524";
             veiculo.Cor = "Verde";
             veiculo.Modelo = "Opala";     
@@ -117,7 +118,7 @@ namespace Alura.Estacionamento.Tests
 
             var veiculoAlterado = new Veiculo();
             veiculoAlterado.Tipo = TipoVeiculo.Automovel;
-            veiculoAlterado.Proprietario = "José Silva";
+            veiculoAlterado.Proprietario = "Josï¿½ Silva";
             veiculoAlterado.Placa = "ZXC-8524";
             veiculoAlterado.Cor = "Preto"; //Alterado
             veiculoAlterado.Modelo = "Opala";
@@ -129,6 +130,106 @@ namespace Alura.Estacionamento.Tests
             //Assert
             Assert.Equal(alterado.Cor,veiculoAlterado.Cor);
 
+        }
+
+        [Fact]
+        public void TestaTipoVeiculo()
+        {
+            //Arrange
+            var _veiculo = new Veiculo();
+            //Assert
+            Assert.Equal(TipoVeiculo.Automovel, _veiculo.Tipo);
+        }
+        
+        [Fact]
+        public void TestaTipoVeiculoMotocicleta()
+        {
+            //Arrange
+            var _veiculo = new Veiculo();
+            _veiculo.Tipo = TipoVeiculo.Motocicleta;
+            
+            //Assert
+            Assert.Equal(TipoVeiculo.Motocicleta, _veiculo.Tipo);
+        }
+        
+        [Theory]
+        [ClassData(typeof(Veiculo))]
+        public void TestaVeiculoClass(Veiculo modelo)
+        {
+            //Arrange
+            var veiculo = new Veiculo();
+
+            //Act
+            veiculo.Acelerar(10);
+            modelo.Acelerar(10);
+
+            //Assert
+            Assert.Equal(modelo.VelocidadeAtual, veiculo.VelocidadeAtual);
+        }
+
+        [Fact]
+        public void FichaDeInformacaoDoVeiculo()
+        {
+            //Arrange
+            var carro = new Veiculo();
+            carro.Proprietario = "Carlos Silva";
+            carro.Tipo = TipoVeiculo.Automovel;
+            carro.Placa = "ZAP-7419";
+            carro.Cor = "Verde";
+            carro.Modelo = "Variante";
+            
+            //Act
+            var dados = carro.ToString();
+            
+            //Assert
+            Assert.Contains("Ficha do VeÃ­culo:", dados);
+        }
+
+        [Fact]
+        public void TestaNomeProprietarioVeiculoComMenosDeTresCaracteres()
+        {
+            //Arrange
+            string nomeProprietario = "Ab";
+
+            //Assert
+            Assert.Throws<FormatException>(
+                //Act
+                () => new Veiculo(nomeProprietario)
+            );
+        }
+
+        [Fact]
+        public void TestaMensagemDeExceÃ§Ã£oDoQuartoCaractereDaPlaca()
+        {
+            //Arrange
+            string placa = "ASDF8888";
+
+            //Act
+            var mensagem = Assert.Throws<FormatException>(
+                () => new Veiculo().Placa = placa
+                );
+            
+            //Assert
+            Assert.Equal("O 4Â° caractere deve ser um hÃ­fen", mensagem.Message);
+        }
+        
+        [Fact]
+        public void TestaUltimosCaracteresPlacaVeiculoComoNumeros()
+        {
+            //Arrange
+            string placaFormatoErrado = "ASD-995U";
+
+            //Assert
+            Assert.Throws<FormatException>(
+                //Act
+                () => new Veiculo().Placa= placaFormatoErrado
+            );
+
+        }
+        
+        public void Dispose()
+        {
+            Output.WriteLine("Dispose invocado.");
         }
     }
 }

@@ -5,13 +5,29 @@ using System.Collections.Generic;
 
 namespace Alura.Estacionamento.Modelos
 {
-    public class Veiculo
+    public class Veiculo : IEnumerable<object[]>
     {
         //Campos
         private string _ticket;
         private string _placa;
         private string _proprietario;        
         private TipoVeiculo _tipo;
+        
+        public IEnumerator<object[]> GetEnumerator()
+        {
+            yield return new object[]
+            {
+                new Veiculo
+                {
+                    Proprietario = "André Silva",
+                    Placa = "ASD-9999",
+                    Cor="Verde",
+                    Modelo="Fusca"
+                }
+            };
+        }
+
+        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
         //Propriedades
         public string Placa
@@ -85,7 +101,11 @@ namespace Alura.Estacionamento.Modelos
         public DateTime HoraSaida { get; set; }
         public string Ticket { get => _ticket; set => _ticket = value; }
         public string IdTicket { get; set; }
-        public TipoVeiculo Tipo { get => _tipo; set => _tipo = value; }
+        // public TipoVeiculo Tipo { get => _tipo; set => _tipo = value; }
+        public TipoVeiculo Tipo {
+            get { return _tipo; } 
+            set { _tipo = value == null ? TipoVeiculo.Automovel : value; }
+        }
 
         //Métodos
         public void Acelerar(int tempoSeg)

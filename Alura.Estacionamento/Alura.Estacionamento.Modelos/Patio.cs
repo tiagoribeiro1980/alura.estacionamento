@@ -38,14 +38,14 @@ namespace Alura.Estacionamento.Modelos
         public void RegistrarEntradaVeiculo(Veiculo veiculo)
         {
             veiculo.HoraEntrada = DateTime.Now;
-            veiculo.Ticket = this.GerarTicket(veiculo);
-            this.Veiculos.Add(veiculo);            
+            veiculo.Ticket = GerarTicket(veiculo);
+            Veiculos.Add(veiculo);            
         }
 
         public string RegistrarSaidaVeiculo(String placa)
         {
             Veiculo encontrado = null;
-            string registro=string.Empty;
+            string registro = string.Empty;
 
             foreach (Veiculo v in this.Veiculos)
             {
@@ -71,7 +71,7 @@ namespace Alura.Estacionamento.Modelos
                                              "Permanência: {2: HH:mm:ss} \n "       +
                                              "Valor a pagar: {3:c}", v.HoraEntrada, v.HoraSaida, new DateTime().Add(tempo), valorCobrado);
                     encontrado = v;
-                    this.Faturado = this.Faturado + valorCobrado;
+                    Faturado += valorCobrado;
                     break;
                 }
 
@@ -92,9 +92,11 @@ namespace Alura.Estacionamento.Modelos
         {
             // Como estamos trabalhando com array de objetos,
             // Podemos utilizar os recursos do `Linq to Objetcs` do .NET
-            var veiculoTemp =  (from veiculo in this.Veiculos
-                           where veiculo.Placa == veiculoAlterado.Placa
-                           select veiculo).SingleOrDefault();
+            // var veiculoTemp =  (from veiculo in this.Veiculos
+            //                where veiculo.Placa == veiculoAlterado.Placa
+            //                select veiculo).SingleOrDefault();
+
+            var veiculoTemp = veiculos.SingleOrDefault(x => x.Placa == veiculoAlterado.Placa);
             veiculoTemp.AlteraDadosVeiculo(veiculoAlterado);
             return veiculoTemp;
 
@@ -104,9 +106,12 @@ namespace Alura.Estacionamento.Modelos
         {
           // Como estamos trabalhando com array de objetos,
           // Podemos utilizar os recursos do `Linq to Objetcs` do .NET
-          var encontrado = (from veiculo in this.Veiculos
-                               where veiculo.IdTicket == ticket
-                               select veiculo).SingleOrDefault();           
+          // var encontrado = (from veiculo in this.Veiculos
+          //                      where veiculo.IdTicket == ticket
+          //                      select veiculo).SingleOrDefault(); 
+          
+          //Código melhorado
+          var encontrado = veiculos.SingleOrDefault(x => x.IdTicket == ticket); 
            return encontrado;
         }
 
@@ -114,13 +119,18 @@ namespace Alura.Estacionamento.Modelos
         {
             // Como estamos trabalhando com array de objetos,
             // Podemos utilizar os recursos do `Linq to Objetcs` do .NET
-            var encontrado = (from veiculo in this.Veiculos 
-                             where veiculo.Placa == placa 
-                             select veiculo).SingleOrDefault();
+            // var encontrado = (from veiculo in this.Veiculos 
+            //                  where veiculo.Placa == placa 
+            //                  select veiculo).SingleOrDefault();
+
+            //Código melhorado
+            var encontrado = veiculos.SingleOrDefault(x => x.Placa == placa);
+
             return encontrado;
         }
 
-        private string GerarTicket(Veiculo veiculo){
+        private string GerarTicket(Veiculo veiculo)
+        {
             // Vamos criar um Id aletório para o Ticket usando a Classe GUID e vamos padronizar com o tamanho de 6 caracteres.
             string identificador = Guid.NewGuid().ToString().Substring(0, 5);
             veiculo.IdTicket = identificador;
@@ -128,7 +138,9 @@ namespace Alura.Estacionamento.Modelos
                            $">>> Identificador: {identificador}" +
                            $">>> Data/Hora de Entrada: {DateTime.Now}" +
                            $">>> Placa Veículo: {veiculo.Placa}" +
-                           $">>> Operador: {this.OperadorPatio.Matricula}";
+                           $">>> Operador Pátio: {OperadorPatio.Matricula}";
+
+            veiculo.Ticket = ticket;
             return ticket;
         }
     }
